@@ -6,23 +6,28 @@
   <title>Truth Table</title>
 </head>
 <body>
-  <h1>Truth Table for Z = A XOR B</h1>
+  <h1>Truth Table for Z = A(B'C' + BC)</h1>
   <table border="1">
     <thead>
       <tr>
-        <th>A</th>
         <th>B</th>
-        <th>Z</th>
+        <th>C</th>
+        <th>B'</th>
+        <th>C'</th>
+        <th>B'C' + BC</th>
       </tr>
     </thead>
     <tbody>
       <% truthTable.forEach(entry => { %>
         <tr>
-          <td><%= entry.a %></td>
           <td><%= entry.b %></td>
+          <td><%= entry.c %></td>
+          <td><%= entry.bPrime %></td>
+          <td><%= entry.cPrime %></td>
           <td><%= entry.result %></td>
         </tr>
       <% }); %>
+      
     </tbody>
   </table>
 </body>

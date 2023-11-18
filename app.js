@@ -6,7 +6,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  // Render halaman HTML dengan parameter data tabel kebenaran
+  // Render HTML page with truth table data
   res.render('index', { truthTable: generateTruthTable() });
 });
 
@@ -14,19 +14,21 @@ app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
 
-// Fungsi untuk menghasilkan tabel kebenaran
+// Function to generate truth table
 function generateTruthTable() {
     const truthTable = [];
   
-    // Loop untuk semua kemungkinan kombinasi nilai A, B, dan C (0 atau 1)
-    for (let a = 0; a <= 1; a++) {
-      for (let b = 0; b <= 1; b++) {
-        for (let c = 0; c <= 1; c++) {
-          const result = a ^ b; // Z = A XOR B
-          truthTable.push({ a, b, c, result });
-        }
+    // Loop through all possible combinations of B and C (0 or 1)
+    for (let b = 0; b <= 1; b++) {
+      for (let c = 0; c <= 1; c++) {
+        const bPrime = !b; // B'
+        const cPrime = !c; // C'
+        const result = bPrime && cPrime || (b && c); // B'C' + BC
+  
+        truthTable.push({ b, c, bPrime, cPrime, result });
       }
     }
   
-    return truthTable;
+
+  return truthTable;
 }
