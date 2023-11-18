@@ -23,13 +23,13 @@
     <tbody>
       <% truthTable.forEach(entry => { %>
         <tr>
-          <td><%= entry.a %></td>
-          <td><%= entry.b %></td>
-          <td><%= entry.c %></td>
-          <td><%= entry.bPrime %></td>
-          <td><%= entry.cPrime %></td>
-          <td><%= entry.bCPrime %></td>
-          <td><%= entry.bC %></td>
+          <td><%= entry.a ? 1 : 0 %></td>
+          <td><%= entry.b ? 1 : 0 %></td>
+          <td><%= entry.c ? 1 : 0 %></td>
+          <td><%= entry.bPrime ? 1 : 0 %></td>
+          <td><%= entry.cPrime ? 1 : 0 %></td>
+          <td><%= entry.bC ? 1 : 0 %></td>
+          <td><%= entry.bCPrime ? 1 : 0 %></td>
           <td><%= entry.result ? 1 : 0 %></td>
         </tr>
       <% }); %>
