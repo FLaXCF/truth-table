@@ -39,6 +39,7 @@ function generateTruthTable(variables, expression) {
 }
 
 function evaluateExpression(row, expression) {
-  const replacedExpression = expression.replace(/[A-Z]/g, match => row[match]);
-  return eval(replacedExpression);
+    const replacedExpression = expression.replace(/[A-Z]/g, match => row[match]);
+    return Function(`"use strict"; return (${replacedExpression})`)();
 }
+  
