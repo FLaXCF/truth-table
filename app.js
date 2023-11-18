@@ -15,20 +15,21 @@ app.listen(port, () => {
 });
 
 // Function to generate truth table
-function generateTruthTable() {
+ffunction generateTruthTable() {
     const truthTable = [];
   
-    // Loop through all possible combinations of B and C (0 or 1)
-    for (let b = 0; b <= 1; b++) {
-      for (let c = 0; c <= 1; c++) {
-        const bPrime = !b; // B'
-        const cPrime = !c; // C'
-        const result = bPrime && cPrime || (b && c); // B'C' + BC
+    // Loop through all possible combinations of A, B, and C (0 or 1)
+    for (let a = 0; a <= 1; a++) {
+      for (let b = 0; b <= 1; b++) {
+        for (let c = 0; c <= 1; c++) {
+          const bPrime = !b; // B'
+          const cPrime = !c; // C'
+          const result = a && (bPrime && cPrime || (b && c)); // Z = A(B'C' + BC)
   
-        truthTable.push({ b, c, bPrime, cPrime, result });
+          truthTable.push({ a, b, c, bPrime, cPrime, result });
+        }
       }
     }
   
-
   return truthTable;
 }
