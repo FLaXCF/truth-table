@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Truth Table Result</title>
+</head>
+<body>
+  <h1>Truth Table Result</h1>
+  <table border="1">
+    <tr>
+      <% for (let variable of variables) { %>
+        <th><%= variable %></th>
+      <% } %>
+      <th>Result</th>
+    </tr>
+    <% for (let row of truthTable) { %>
+      <tr>
+        <% for (let variable of variables) { %>
+          <td><%= row[variable] ? '1' : '0' %></td>
+        <% } %>
+        <td><%= row.result ? '1' : '0' %></td>
+      </tr>
+    <% } %>
+  </table>
+</body>
+</html>
