@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Truth Table</title>
+  <title>Truth Tables</title>
 </head>
 <body>
-  <h1>Truth Table for Z = A(B'C' + BC)</h1>
+  <h1>Truth Tables for Logical Expressions</h1>
+
+  <h2>Expression 1: Z = A(B'C' + BC)</h2>
   <table border="1">
     <thead>
       <tr>
@@ -17,25 +19,112 @@
         <th>C'</th>
         <th>B'C'</th>
         <th>BC</th>
-        <th>B'C+BC</th>
+        <th>B'C' + BC</th>
         <th>Z</th>
       </tr>
     </thead>
     <tbody>
-      <% truthTable.forEach(entry => { %>
+      <% truthTables.expression1.forEach(entry => { %>
         <tr>
           <td><%= entry.a ? 1 : 0 %></td>
           <td><%= entry.b ? 1 : 0 %></td>
           <td><%= entry.c ? 1 : 0 %></td>
           <td><%= entry.bPrime ? 1 : 0 %></td>
           <td><%= entry.cPrime ? 1 : 0 %></td>
-          <td><%= entry.bCPrime ? 1 : 0 %></td>
-          <td><%= entry.bC ? 1 : 0 %></td>
-          <td><%= entry.bCplusbc ? 1 : 0 %></td>
+          <td><%= entry.term1 ? 1 : 0 %></td>
+          <td><%= entry.term2 ? 1 : 0 %></td>
+          <td><%= entry.term1 || entry.term2 ? 1 : 0 %></td>
           <td><%= entry.result ? 1 : 0 %></td>
         </tr>
       <% }); %>
     </tbody>
   </table>
+
+  <h2>Expression 2: Z = (A + AB) + A'B</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>A</th>
+        <th>B</th>
+        <th>A + AB</th>
+        <th>AB</th>
+        <th>A + AB + A'B</th>
+        <th>Z</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% truthTables.expression2.forEach(entry => { %>
+        <tr>
+          <td><%= entry.a ? 1 : 0 %></td>
+          <td><%= entry.b ? 1 : 0 %></td>
+          <td><%= entry.term1 ? 1 : 0 %></td>
+          <td><%= entry.term2 ? 1 : 0 %></td>
+          <td><%= entry.term1 + entry.term2 ? 1 : 0 %></td>
+          <td><%= entry.result ? 1 : 0 %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+  <h2>Expression 3: F = XY'Z + XY'Z'</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>X</th>
+        <th>Y</th>
+        <th>Z</th>
+        <th>Y'</th>
+        <th>XY'Z</th>
+        <th>XY'Z'</th>
+        <th>F</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% truthTables.expression3.forEach(entry => { %>
+        <tr>
+          <td><%= entry.x ? 1 : 0 %></td>
+          <td><%= entry.y ? 1 : 0 %></td>
+          <td><%= entry.z ? 1 : 0 %></td>
+          <td><%= entry.yPrime ? 1 : 0 %></td>
+          <td><%= entry.term1 ? 1 : 0 %></td>
+          <td><%= entry.term2 ? 1 : 0 %></td>
+          <td><%= entry.result ? 1 : 0 %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+  <h2>Expression 4: F = X'YZ + X'YZ' + XZ</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>X</th>
+        <th>Y</th>
+        <th>Z</th>
+        <th>X'</th>
+        <th>Y'</th>
+        <th>X'YZ</th>
+        <th>X'YZ'</th>
+        <th>XZ</th>
+        <th>F</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% truthTables.expression4.forEach(entry => { %>
+        <tr>
+          <td><%= entry.x ? 1 : 0 %></td>
+          <td><%= entry.y ? 1 : 0 %></td>
+          <td><%= entry.z ? 1 : 0 %></td>
+          <td><%= entry.xPrime ? 1 : 0 %></td>
+          <td><%= entry.yPrime ? 1 : 0 %></td>
+          <td><%= entry.term1 ? 1 : 0 %></td>
+          <td><%= entry.term2 ? 1 : 0 %></td>
+          <td><%= entry.term3 ? 1 : 0 %></td>
+          <td><%= entry.result ? 1 : 0 %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
 </body>
 </html>
