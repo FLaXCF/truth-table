@@ -15,7 +15,7 @@ app.listen(port, () => {
 });
 
 // Function to generate truth table
-ffunction generateTruthTable() {
+function generateTruthTable() {
     const truthTable = [];
   
     // Loop through all possible combinations of A, B, and C (0 or 1)
