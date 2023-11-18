@@ -6,22 +6,30 @@
   <title>Truth Table</title>
 </head>
 <body>
-  <h1>Truth Table for F = X'YZ + X'YZ' + XZ</h1>
+  <h1>Truth Table for Z = A(B'C' + BC)</h1>
   <table border="1">
     <thead>
       <tr>
-        <th>X</th>
-        <th>Y</th>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+        <th>B'</th>
+        <th>C'</th>
+        <th>B'C'</th>
+        <th>BC</th>
         <th>Z</th>
-        <th>F</th>
       </tr>
     </thead>
     <tbody>
       <% truthTable.forEach(entry => { %>
         <tr>
-          <td><%= entry.x %></td>
-          <td><%= entry.y %></td>
-          <td><%= entry.z %></td>
+          <td><%= entry.a %></td>
+          <td><%= entry.b %></td>
+          <td><%= entry.c %></td>
+          <td><%= entry.bPrime %></td>
+          <td><%= entry.cPrime %></td>
+          <td><%= entry.bCPrime %></td>
+          <td><%= entry.bC %></td>
           <td><%= entry.result %></td>
         </tr>
       <% }); %>
