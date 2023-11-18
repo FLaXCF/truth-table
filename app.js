@@ -22,9 +22,10 @@ function generateTruthTable() {
         const cPrime = !c; 
         const bCPrime = bPrime && cPrime; 
         const bC = b && c; 
+        const bCplusbc = bCPrime + bC;
         const result = a && (bCPrime || bC);
         
-        truthTable.push({ a, b, c, bPrime, cPrime, bCPrime, bC, result });
+        truthTable.push({ a, b, c, bPrime, cPrime, bCPrime, bC, bCplusbc, result });
       }
     }
   }
