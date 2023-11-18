@@ -1,45 +1,32 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
-
-app.post('/calculate', (req, res) => {
-  const expression = req.body.expression;
-  const variables = req.body.variables.split(',');
-
-  const truthTable = generateTruthTable(variables, expression);
-
-  res.render('result', { truthTable, variables });
+  res.render('index', { truthTable: generateTruthTable() });
 });
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server is running at http://localhost:${port}`);
 });
 
-function generateTruthTable(variables, expression) {
+function generateTruthTable() {
   const truthTable = [];
-  const numRows = Math.pow(2, variables.length);
 
-  for (let i = 0; i < numRows; i++) {
-    const row = {};
-    for (let j = 0; j < variables.length; j++) {
-      row[variables[j]] = (i & Math.pow(2, j)) !== 0;
+  for (let x = 0; x <= 1; x++) {
+    for (let y = 0; y <= 1; y++) {
+      for (let z = 0; z <= 1; z++) {
+        const result = evaluateLogicExpression(x, y, z);
+        truthTable.push({ x, y, z, result });
+      }
     }
-    row['result'] = evaluateExpression(row, expression);
-    truthTable.push(row);
   }
 
   return truthTable;
 }
-
-function evaluateExpression(row, expression) {
-    const replacedExpression = expression.replace(/[A-Z]/g, match => row[match]);
-    return Function(`"use strict"; return (${replacedExpression})`)();
+function evaluateLogicExpression(x, y, z) {
+  return !(x && !y && z) || !(x && !y && !z) || (x && z);
 }
-  

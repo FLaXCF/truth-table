@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Truth Table</title>
+</head>
+<body>
+  <h1>Truth Table for F = X'YZ + X'YZ' + XZ</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>X</th>
+        <th>Y</th>
+        <th>Z</th>
+        <th>F</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% truthTable.forEach(entry => { %>
+        <tr>
+          <td><%= entry.x %></td>
+          <td><%= entry.y %></td>
+          <td><%= entry.z %></td>
+          <td><%= entry.result %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>
