@@ -136,7 +136,7 @@ function generateTruthTable6() {
         const term1 = aPrime && b;
         const term2 = cPrime;
         const term3 = aPrime && b || cPrime;
-        const term4 = a && !b || b && cPrime;
+        const term4 = a && !b || bPrime && c;
         const result = term3 || term4;
 
         truthTable.push({ a, b, c, aPrime, bPrime, cPrime, term1, term2, term3, term4, result });
