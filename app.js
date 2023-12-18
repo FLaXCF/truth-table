@@ -14,6 +14,7 @@ app.get('/', (req, res) => {
       expression3: generateTruthTable3(),
       expression4: generateTruthTable4(),
       expression5: generateTruthTable5(),
+      expression6: generateTruthTable6(),
     },
   });
 });
@@ -102,7 +103,7 @@ function generateTruthTable4() {
   return truthTable;
 }
 
-function generateTruthTable1() {
+function generateTruthTable5() {
   const truthTable = [];
 
   for (let a = 0; a <= 1; a++) {
@@ -115,6 +116,30 @@ function generateTruthTable1() {
         const result = term1 || term2 || term3 || term4;
 
         truthTable.push({ a, b, c, term1, term2, term3, term4, result });
+      }
+    }
+  }
+
+  return truthTable;
+}
+
+// Fungsi untuk menghasilkan tabel kebenaran untuk ekspresi 6
+function generateTruthTable6() {
+  const truthTable = [];
+
+  for (let a = 0; a <= 1; a++) {
+    for (let b = 0; b <= 1; b++) {
+      for (let c = 0; c <= 1; c++) {
+        const aPrime = !a;
+        const bPrime = !b;
+        const cPrime = !c;
+        const term1 = aPrime && b;
+        const term2 = cPrime;
+        const term3 = aPrime && b || cPrime;
+        const term4 = a && !b || b && cPrime;
+        const result = term3 || term4;
+
+        truthTable.push({ a, b, c, aPrime, bPrime, cPrime, term1, term2, term3, term4, result });
       }
     }
   }
