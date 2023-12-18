@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
       expression2: generateTruthTable2(),
       expression3: generateTruthTable3(),
       expression4: generateTruthTable4(),
+      expression5: generateTruthTable5(),
     },
   });
 });
@@ -100,3 +101,24 @@ function generateTruthTable4() {
 
   return truthTable;
 }
+
+function generateTruthTable1() {
+  const truthTable = [];
+
+  for (let a = 0; a <= 1; a++) {
+    for (let b = 0; b <= 1; b++) {
+      for (let c = 0; c <= 1; c++) {
+        const term1 = a && !b;
+        const term2 = !c;
+        const term3 = a && !b;
+        const term4 = b && !c;
+        const result = term1 || term2 || term3 || term4;
+
+        truthTable.push({ a, b, c, term1, term2, term3, term4, result });
+      }
+    }
+  }
+
+  return truthTable;
+}
+
