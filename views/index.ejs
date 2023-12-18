@@ -126,5 +126,38 @@
     </tbody>
   </table>
 
+<h2>Expression 6: F = (A'B + C') + (AB' + B'C)</h2>
+<table border="1">
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>A'B</th>
+      <th>C'</th>
+      <th>A'B + C'</th>
+      <th>AB'</th>
+      <th>B'C</th>
+      <th>(A'B + C') + (AB' + B'C)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% truthTables.expression6.forEach(entry => { %>
+      <tr>
+        <td><%= entry.a ? 1 : 0 %></td>
+        <td><%= entry.b ? 1 : 0 %></td>
+        <td><%= entry.c ? 1 : 0 %></td>
+        <td><%= entry.term1 ? 1 : 0 %></td>
+        <td><%= entry.term2 ? 1 : 0 %></td>
+        <td><%= entry.term1 || entry.term2 ? 1 : 0 %></td>
+        <td><%= entry.term3 ? 1 : 0 %></td>
+        <td><%= entry.term4 ? 1 : 0 %></td>
+        <td><%= entry.result ? 1 : 0 %></td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+
 </body>
 </html>
