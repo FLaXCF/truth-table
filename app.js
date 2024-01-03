@@ -147,3 +147,26 @@ function generateTruthTable6() {
   return truthTable;
 }
 
+function generateTruthTable7() {
+  const truthTable = [];
+
+  for (let x = 0; a <= 1; x++) {
+    for (let y = 0; b <= 1; y++) {
+      for (let z = 0; c <= 1; z++) {
+        const xPrime = !x;
+        const yPrime = !y;
+        const zPrime = !z;
+        const term1 = aPrime && b;
+        const term2 = cPrime;
+        const term3 = aPrime && b || cPrime;
+        const term4 = a && !b || bPrime && c;
+        const result = term3 || term4;
+
+        truthTable.push({ x, y, z, xPrime, yPrime, zPrime, term1, term2, term3, term4, result });
+      }
+    }
+  }
+
+  return truthTable;
+}
+
