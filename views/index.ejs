@@ -186,34 +186,6 @@
             </tbody>
         </table>
     </div>
-    
-    <div>
-        <h2>Expression 7: x ∧ (¬x ∨ y) ∨ (¬y ∨ z)</h2>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>x</th>
-                    <th>y</th>
-                    <th>z</th>
-                    <th>Term1 (¬x ∨ y)</th>
-                    <th>Term2 (¬y ∨ z)</th>
-                    <th>Result</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% truthTables.expression7.forEach(row => { %>
-                    <tr>
-                        <td><%= row.x %></td>
-                        <td><%= row.y %></td>
-                        <td><%= row.z %></td>
-                        <td><%= row.term1 ? 1 : 0 %></td>
-                        <td><%= row.term2 ? 1 : 0 %></td>
-                        <td><%= row.result ? 1 : 0 %></td>
-                    </tr>
-                <% }); %>
-            </tbody>
-        </table>
-    </div>
 
 </body>
 </html>
