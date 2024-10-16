@@ -24,20 +24,15 @@ app.listen(port, () => {
 });
 
 // Fungsi untuk menghasilkan tabel kebenaran untuk ekspresi 1
-function generateTruthTable1() {
+function generateTruthTableA() {
   const truthTable = [];
 
-  for (let a = 0; a <= 1; a++) {
-    for (let b = 0; b <= 1; b++) {
-      for (let c = 0; c <= 1; c++) {
-        const bPrime = !b;
-        const cPrime = !c;
-        const term1 = bPrime && cPrime;
-        const term2 = b && c;
-        const result = a && (term1 || term2);
+  for (let p = 0; p <= 1; p++) {
+    for (let q = 0; q <= 1; q++) {
+      const term1 = !p && (p || q);  // ¬p ∧ (p ∨ q)
+      const result = !term1 || q;    // (¬p ∧ (p ∨ q)) → q
 
-        truthTable.push({ a, b, c, bPrime, cPrime, term1, term2, result });
-      }
+      truthTable.push({ p, q, term1: +term1, result: +result });
     }
   }
 
@@ -45,16 +40,17 @@ function generateTruthTable1() {
 }
 
 // Fungsi untuk menghasilkan tabel kebenaran untuk ekspresi 2
-function generateTruthTable2() {
+function generateTruthTableB() {
   const truthTable = [];
 
-  for (let a = 0; a <= 1; a++) {
-    for (let b = 0; b <= 1; b++) {
-      const term1 = a + (a * b);
-      const term2 = !a;
-      const result = term1 + term2;
+  for (let p = 0; p <= 1; p++) {
+    for (let q = 0; q <= 1; q++) {
+      for (let r = 0; r <= 1; r++) {
+        const term1 = (!p || q) && (!q || r); // (p → q) ∧ (q → r)
+        const result = !term1 || (!p || r);   // [(p → q) ∧ (q → r)] → (p → r)
 
-      truthTable.push({ a, b, term1, term2, result });
+        truthTable.push({ p, q, r, term1: +term1, result: +result });
+      }
     }
   }
 
@@ -62,19 +58,15 @@ function generateTruthTable2() {
 }
 
 // Fungsi untuk menghasilkan tabel kebenaran untuk ekspresi 3
-function generateTruthTable3() {
+function generateTruthTableC() {
   const truthTable = [];
 
-  for (let x = 0; x <= 1; x++) {
-    for (let y = 0; y <= 1; y++) {
-      for (let z = 0; z <= 1; z++) {
-        const yPrime = !y;
-        const term1 = x && yPrime && z;
-        const term2 = x && yPrime && !z;
-        const result = term1 || term2;
+  for (let p = 0; p <= 1; p++) {
+    for (let q = 0; q <= 1; q++) {
+      const term1 = p && (!p || q);  // p ∧ (p → q)
+      const result = !term1 || q;    // [p ∧ (p → q)] → q
 
-        truthTable.push({ x, y, z, yPrime, term1, term2, result });
-      }
+      truthTable.push({ p, q, term1: +term1, result: +result });
     }
   }
 
@@ -82,26 +74,23 @@ function generateTruthTable3() {
 }
 
 // Fungsi untuk menghasilkan tabel kebenaran untuk ekspresi 4
-function generateTruthTable4() {
+function generateTruthTableD() {
   const truthTable = [];
 
-  for (let x = 0; x <= 1; x++) {
-    for (let y = 0; y <= 1; y++) {
-      for (let z = 0; z <= 1; z++) {
-        const xPrime = !x;
-        const yPrime = !y;
-        const term1 = xPrime && y && z;
-        const term2 = xPrime && y && !z;
-        const term3 = x && z;
-        const result = term1 || term2 || term3;
+  for (let p = 0; p <= 1; p++) {
+    for (let q = 0; q <= 1; q++) {
+      for (let r = 0; r <= 1; r++) {
+        const term1 = (p || q) && (!p || r) && (!q || r);  // (p ∨ q) ∧ (p → r) ∧ (q → r)
+        const result = !term1 || r;                        // [(p ∨ q) ∧ (p → r) ∧ (q → r)] → r
 
-        truthTable.push({ x, y, z, xPrime, yPrime, term1, term2, term3, result });
+        truthTable.push({ p, q, r, term1: +term1, result: +result });
       }
     }
   }
 
   return truthTable;
 }
+
 
 function generateTruthTable5() {
   const truthTable = [];
