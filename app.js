@@ -9,10 +9,10 @@ app.get('/', (req, res) => {
   // Render halaman HTML dengan parameter data tabel kebenaran
   res.render('index', {
     truthTables: {
-      expression1: generateTruthTable1(),
-      expression2: generateTruthTable2(),
-      expression3: generateTruthTable3(),
-      expression4: generateTruthTable4(),
+      expression1: generateTruthTableA(),
+      expression2: generateTruthTableB(),
+      expression3: generateTruthTableC(),
+      expression4: generateTruthTableD(),
       expression5: generateTruthTable5(),
       expression6: generateTruthTable6(),
     },
