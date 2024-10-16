@@ -5,13 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Truth Tables</title>
     <link rel="stylesheet" href="/styles.css"> <!-- Link to your CSS if you have any -->
+    <style>
+        table {
+            border-collapse: collapse; /* Merge borders */
+            width: 100%; /* Full width */
+            margin-bottom: 20px; /* Space between tables */
+        }
+        th, td {
+            padding: 8px; /* Space inside cells */
+            text-align: left; /* Align text to the left */
+        }
+        th {
+            background-color: #f2f2f2; /* Light gray background for headers */
+        }
+    </style>
 </head>
 <body>
     <h1>Truth Tables</h1>
 
     <div>
         <h2>Expression 1: ¬p ∧ (p ∨ q) → q</h2>
-        <table>
+        <table border="1">
             <thead>
                 <tr>
                     <th>p</th>
@@ -35,7 +49,7 @@
 
     <div>
         <h2>Expression 2: (p → q) ∧ (q → r) → (p → r)</h2>
-        <table>
+        <table border="1">
             <thead>
                 <tr>
                     <th>p</th>
@@ -61,7 +75,7 @@
 
     <div>
         <h2>Expression 3: p ∧ (p → q) → q</h2>
-        <table>
+        <table border="1">
             <thead>
                 <tr>
                     <th>p</th>
@@ -85,7 +99,7 @@
 
     <div>
         <h2>Expression 4: (p ∨ q) ∧ (p → r) ∧ (q → r) → r</h2>
-        <table>
+        <table border="1">
             <thead>
                 <tr>
                     <th>p</th>
@@ -110,17 +124,17 @@
     </div>
 
     <div>
-        <h2>Expression 5: a && !b || !c || (a && !b) || (b && !c)</h2>
-        <table>
+        <h2>Expression 5: (a ∧ ¬b) ∨ ¬c ∨ (a ∧ ¬b) ∨ (b ∧ ¬c)</h2>
+        <table border="1">
             <thead>
                 <tr>
                     <th>a</th>
                     <th>b</th>
                     <th>c</th>
-                    <th>Term1 (a && !b)</th>
-                    <th>Term2 (!c)</th>
-                    <th>Term3 (a && !b)</th>
-                    <th>Term4 (b && !c)</th>
+                    <th>Term1 (a ∧ ¬b)</th>
+                    <th>Term2 (¬c)</th>
+                    <th>Term3 (a ∧ ¬b)</th>
+                    <th>Term4 (b ∧ ¬c)</th>
                     <th>Result</th>
                 </tr>
             </thead>
@@ -142,8 +156,8 @@
     </div>
 
     <div>
-        <h2>Expression 6: Complex Expression</h2>
-        <table>
+        <h2>Expression 6: (¬a ∧ b) ∨ ¬c ∨ (¬a ∧ b) ∨ (b ∧ ¬c)</h2>
+        <table border="1">
             <thead>
                 <tr>
                     <th>a</th>
@@ -163,9 +177,37 @@
                         <td><%= row.b %></td>
                         <td><%= row.c %></td>
                         <td><%= row.aPrime ? 1 : 0 %></td>
-                        <td><%= row.cPrime ? 1 : 0 %></td>
+                        <td><%= row.bPrime ? 1 : 0 %></td>
                         <td><%= row.term3 ? 1 : 0 %></td>
                         <td><%= row.term4 ? 1 : 0 %></td>
+                        <td><%= row.result ? 1 : 0 %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+    
+    <div>
+        <h2>Expression 7: x ∧ (¬x ∨ y) ∨ (¬y ∨ z)</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>x</th>
+                    <th>y</th>
+                    <th>z</th>
+                    <th>Term1 (¬x ∨ y)</th>
+                    <th>Term2 (¬y ∨ z)</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% truthTables.expression7.forEach(row => { %>
+                    <tr>
+                        <td><%= row.x %></td>
+                        <td><%= row.y %></td>
+                        <td><%= row.z %></td>
+                        <td><%= row.term1 ? 1 : 0 %></td>
+                        <td><%= row.term2 ? 1 : 0 %></td>
                         <td><%= row.result ? 1 : 0 %></td>
                     </tr>
                 <% }); %>
